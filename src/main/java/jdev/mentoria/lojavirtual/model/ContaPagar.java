@@ -114,7 +114,6 @@ public class ContaPagar implements Serializable {
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
-
 		
 	
 	public StatusContaPagar getStatus() {
