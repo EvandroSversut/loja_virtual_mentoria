@@ -33,26 +33,32 @@ public class Usuario implements UserDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usuario")
-	private  Long id;
-	
+	private Long id;
+
 	private String login;
-	
+
 	private String senha;
-	
+
 	@Temporal(TemporalType.DATE)
 	private Date dataAtualSenha;
-	
+
 	@OneToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "usuarios_acesso", uniqueConstraints = @UniqueConstraint (columnNames =
-	{"usuario_id","acesso_id"}, name = "unique_acesso_user"),
-	joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id", table = "usuario",
-	unique = false, foreignKey = @ForeignKey(name = "usuario_fk", value = ConstraintMode.CONSTRAINT)),
-	inverseJoinColumns = @JoinColumn(name = "acesso_id", unique = false, 
-	referencedColumnName = "id", table = "acesso", foreignKey = @ForeignKey(name = "acesso_fk",
-	value = ConstraintMode.CONSTRAINT)))
+	@JoinTable(name = "usuarios_acesso",
+			uniqueConstraints = @UniqueConstraint(columnNames = { "usuario_id", "acesso_id" },
+			name = "unique_acesso_user"), 
+			
+			joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id", table = "usuario",
+			unique = false, foreignKey = @ForeignKey(name = "usuario_fk", value = ConstraintMode.CONSTRAINT)),
+			
+	inverseJoinColumns = @JoinColumn(name = "acesso_id", 
+			unique = false, referencedColumnName = "id", table = "acesso",
+			foreignKey = @ForeignKey(name = "acesso_fk", value = ConstraintMode.CONSTRAINT)))
 	private List<Acesso> acessos;
-	
-	/* Autoridades = são os acessos, ou seja, ROLE_ADMIN, ROLE_SECRETARIO, ROLE_FINANCEIRO*/
+
+	/*
+	 * Autoridades = são os acessos, ou seja, ROLE_ADMIN, ROLE_SECRETARIO,
+	 * ROLE_FINANCEIRO
+	 */
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return this.acessos;
