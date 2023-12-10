@@ -16,27 +16,29 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "imagem_produto")
-@SequenceGenerator(name = "seq_imagem_produto", sequenceName = "seq_imagem_produto",
+@Table(name = "nota_item_produto")
+@SequenceGenerator(name = "seq_nota_item_produto", sequenceName = "seq_nota_item_produto",
 allocationSize = 1, initialValue = 1)
-public class ImagemProduto implements Serializable {
+public class NotaItemProduto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_imagem_produto")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_nota_item_produto")
 	private Long id;
 	
-	@Column(columnDefinition = "text")
-	private String imagemOriginal;
-	
-	@Column(columnDefinition = "text")
-	private String imagemMiniatura;
+	@Column(nullable = false)
+	private Double quantidade;
 	
 	@ManyToOne
 	@JoinColumn(name = "produto_id", nullable = false,
 	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "produto_fk"))
 	private Produto produto;
+	
+	@ManyToOne
+	@JoinColumn(name = "nota_fiscal_compra_id", nullable = false,
+	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "nota_fiscal_compra_fk"))
+	private NotaFiscalCompra notaFiscalCompra;
 
 	public Long getId() {
 		return id;
@@ -46,20 +48,12 @@ public class ImagemProduto implements Serializable {
 		this.id = id;
 	}
 
-	public String getImagemOriginal() {
-		return imagemOriginal;
+	public Double getQuantidade() {
+		return quantidade;
 	}
 
-	public void setImagemOriginal(String imagemOriginal) {
-		this.imagemOriginal = imagemOriginal;
-	}
-
-	public String getImagemMiniatura() {
-		return imagemMiniatura;
-	}
-
-	public void setImagemMiniatura(String imagemMiniatura) {
-		this.imagemMiniatura = imagemMiniatura;
+	public void setQuantidade(Double quantidade) {
+		this.quantidade = quantidade;
 	}
 
 	public Produto getProduto() {
@@ -68,6 +62,14 @@ public class ImagemProduto implements Serializable {
 
 	public void setProduto(Produto produto) {
 		this.produto = produto;
+	}
+
+	public NotaFiscalCompra getNotaFiscalCompra() {
+		return notaFiscalCompra;
+	}
+
+	public void setNotaFiscalCompra(NotaFiscalCompra notaFiscalCompra) {
+		this.notaFiscalCompra = notaFiscalCompra;
 	}
 
 	@Override
@@ -83,7 +85,7 @@ public class ImagemProduto implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ImagemProduto other = (ImagemProduto) obj;
+		NotaItemProduto other = (NotaItemProduto) obj;
 		return Objects.equals(id, other.id);
 	}
 	
