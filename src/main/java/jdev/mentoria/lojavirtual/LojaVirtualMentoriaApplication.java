@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 // se nao tiver criando as tabelas no banco, usar esta anotacao
 @EntityScan(basePackages = "jdev.mentoria.lojavirtual.model")
 @ComponentScan(basePackages = {"jdev.*"})
-@EnableJpaRepositories(basePackages = {"jdev.mentoria.lojavirtual.repostitory"})
+@EnableJpaRepositories(basePackages = {"jdev.mentoria.lojavirtual.repository"})
 @EnableTransactionManagement
 public class LojaVirtualMentoriaApplication {
 
