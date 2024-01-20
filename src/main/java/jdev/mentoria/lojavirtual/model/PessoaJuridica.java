@@ -1,12 +1,12 @@
 package jdev.mentoria.lojavirtual.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.PrimaryKeyJoinColumn;
-import jakarta.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 @Entity
-@Table(name= "pessoa_juridica")
+@Table(name = "pessoa_juridica")
 @PrimaryKeyJoinColumn(name = "id")
 public class PessoaJuridica extends Pessoa {
 
@@ -15,12 +15,13 @@ public class PessoaJuridica extends Pessoa {
 	@Column(nullable = false)
 	private String cnpj;
 	
-	private String inscEst;
+	@Column(nullable = false)
+	private String inscEstadual;
 	
-	private String inscMun;
+	private String inscMunicipal;
 	
 	@Column(nullable = false)
-	private String nomeFant;
+	private String nomeFantasia;
 	
 	@Column(nullable = false)
 	private String razaoSocial;
@@ -35,28 +36,28 @@ public class PessoaJuridica extends Pessoa {
 		this.cnpj = cnpj;
 	}
 
-	public String getInscEst() {
-		return inscEst;
+	public String getInscEstadual() {
+		return inscEstadual;
 	}
 
-	public void setInscEst(String inscEst) {
-		this.inscEst = inscEst;
+	public void setInscEstadual(String inscEstadual) {
+		this.inscEstadual = inscEstadual;
 	}
 
-	public String getInscMun() {
-		return inscMun;
+	public String getInscMunicipal() {
+		return inscMunicipal;
 	}
 
-	public void setInscMun(String inscMun) {
-		this.inscMun = inscMun;
+	public void setInscMunicipal(String inscMunicipal) {
+		this.inscMunicipal = inscMunicipal;
 	}
 
-	public String getNomeFant() {
-		return nomeFant;
+	public String getNomeFantasia() {
+		return nomeFantasia;
 	}
 
-	public void setNomeFant(String nomeFant) {
-		this.nomeFant = nomeFant;
+	public void setNomeFantasia(String nomeFantasia) {
+		this.nomeFantasia = nomeFantasia;
 	}
 
 	public String getRazaoSocial() {
@@ -74,6 +75,5 @@ public class PessoaJuridica extends Pessoa {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
-	
-	
+
 }

@@ -3,30 +3,30 @@ package jdev.mentoria.lojavirtual.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.Objects;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.ConstraintMode;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ForeignKey;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
+import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 
 @Entity
 @Table(name = "nota_fiscal_compra")
-@SequenceGenerator(name = "seq_nota_fiscal_compra", sequenceName = "seq_nota_fiscal_compra",
-allocationSize = 1, initialValue = 1)
+@SequenceGenerator(name = "seq_nota_fiscal_compra", sequenceName = "seq_nota_fiscal_compra", allocationSize = 1, initialValue = 1)
 public class NotaFiscalCompra implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_nota_fiscal_compra")
 	private Long id;
@@ -37,30 +37,31 @@ public class NotaFiscalCompra implements Serializable {
 	@Column(nullable = false)
 	private String serieNota;
 	
+	
 	private String descricaoObs;
 	
 	@Column(nullable = false)
-	private BigDecimal vrTotal;
+	private BigDecimal valorTotal;
 	
-	private BigDecimal vrDesconto;
+	private BigDecimal valorDesconto;
 	
 	@Column(nullable = false)
-	private BigDecimal vrIcms;
+	private BigDecimal valorIcms;
 	
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date dataCompra;
-
+	
 	@ManyToOne(targetEntity = Pessoa.class)
-	@JoinColumn(name = "pessoa_id", nullable = false,
+	@JoinColumn(name = "pessoa_id", nullable = false, 
 	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoa_fk"))
 	private Pessoa pessoa;
 	
 	@ManyToOne
-	@JoinColumn(name = "conta_pagar_id", nullable = false,
-	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "conta_pagar_id_fk"))
+	@JoinColumn(name = "conta_pagar_id", nullable = false, 
+	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "conta_pagar_fk"))
 	private ContaPagar contaPagar;
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -93,28 +94,28 @@ public class NotaFiscalCompra implements Serializable {
 		this.descricaoObs = descricaoObs;
 	}
 
-	public BigDecimal getVrTotal() {
-		return vrTotal;
+	public BigDecimal getValorTotal() {
+		return valorTotal;
 	}
 
-	public void setVrTotal(BigDecimal vrTotal) {
-		this.vrTotal = vrTotal;
+	public void setValorTotal(BigDecimal valorTotal) {
+		this.valorTotal = valorTotal;
 	}
 
-	public BigDecimal getVrDesconto() {
-		return vrDesconto;
+	public BigDecimal getValorDesconto() {
+		return valorDesconto;
 	}
 
-	public void setVrDesconto(BigDecimal vrDesconto) {
-		this.vrDesconto = vrDesconto;
+	public void setValorDesconto(BigDecimal valorDesconto) {
+		this.valorDesconto = valorDesconto;
 	}
 
-	public BigDecimal getVrIcms() {
-		return vrIcms;
+	public BigDecimal getValorIcms() {
+		return valorIcms;
 	}
 
-	public void setVrIcms(BigDecimal vrIcms) {
-		this.vrIcms = vrIcms;
+	public void setValorIcms(BigDecimal valorIcms) {
+		this.valorIcms = valorIcms;
 	}
 
 	public Date getDataCompra() {
@@ -143,7 +144,10 @@ public class NotaFiscalCompra implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
 	}
 
 	@Override
@@ -155,8 +159,17 @@ public class NotaFiscalCompra implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		NotaFiscalCompra other = (NotaFiscalCompra) obj;
-		return Objects.equals(id, other.id);
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
-
 	
+	
+	
+	
+	
+
 }
