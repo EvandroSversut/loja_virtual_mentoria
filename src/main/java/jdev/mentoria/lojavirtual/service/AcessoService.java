@@ -8,13 +8,16 @@ import jdev.mentoria.lojavirtual.repository.AcessoRepository;
 
 @Service
 public class AcessoService {
-
+	
 	@Autowired
 	private AcessoRepository acessoRepository;
 	
+	
 	public Acesso save(Acesso acesso) {
 		
-		// qualquer tipo de validacao antes de salvar
+		/*Qualquer tipo de validação*/
+		
 		return acessoRepository.save(acesso);
 	}
+
 }
