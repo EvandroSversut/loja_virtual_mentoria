@@ -26,6 +26,9 @@ public abstract class Pessoa implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_pessoa")
 	private Long id;
+	
+	@Column
+	private String tipoPessoa;
 
 	@Column(nullable = false)
 	private String nome;
@@ -39,6 +42,13 @@ public abstract class Pessoa implements Serializable {
 	@OneToMany(mappedBy = "pessoa", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Endereco> enderecos = new ArrayList<Endereco>();
 	
+	public String getTipoPessoa() {
+		return tipoPessoa;
+	}
+	
+	public void setTipoPessoa(String tipoPessoa) {
+		this.tipoPessoa = tipoPessoa;
+	}
 	
 	public void setEnderecos(List<Endereco> enderecos) {
 		this.enderecos = enderecos;

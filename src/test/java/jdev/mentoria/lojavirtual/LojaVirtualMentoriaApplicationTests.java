@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -29,6 +30,7 @@ import jdev.mentoria.lojavirtual.repository.AcessoRepository;
 import jdev.mentoria.lojavirtual.service.AcessoService;
 import junit.framework.TestCase;
 
+//@Profile("test")
 @SpringBootTest(classes = LojaVirtualMentoriaApplication.class)
 public class LojaVirtualMentoriaApplicationTests extends TestCase {
 
