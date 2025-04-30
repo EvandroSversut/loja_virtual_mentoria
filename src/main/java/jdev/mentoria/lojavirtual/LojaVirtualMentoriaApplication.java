@@ -1,4 +1,4 @@
-package loja_virtual_mentoria.loja_virtual_mentoria;
+package jdev.mentoria.lojavirtual;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
