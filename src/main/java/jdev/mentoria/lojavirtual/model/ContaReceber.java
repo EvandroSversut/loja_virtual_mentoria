@@ -19,7 +19,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jdev.mentoria.lojavirtual.enums.StatusContaReceber;
-import jdev.mentoria.lojavirtual.enums.TipoEndereco;
+
 
 @Entity
 @Table( name = "conta_receber")
