@@ -21,11 +21,13 @@ public class Produto implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_produto")
     private Long id;
 
+    @Column(nullable = false)
     private String tipoUnidade;
 
+    @Column(nullable = false)
     private String nome;
 
-    @Column(columnDefinition = "text", length = 2000)
+    @Column(columnDefinition = "text", length = 2000, nullable = false)
     private String descricao;
 
     // item produto - associar
@@ -38,8 +40,10 @@ public class Produto implements Serializable {
 
     private Double profundidade;
 
+    @Column(nullable = false)
     private BigDecimal valorVenda = BigDecimal.ZERO;
 
+    @Column(nullable = false)
     private Integer QdeEstoque = 0;
 
     private Integer QdeAlertaEstoque = 0;

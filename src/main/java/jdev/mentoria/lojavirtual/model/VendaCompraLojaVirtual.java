@@ -65,17 +65,17 @@ public class VendaCompraLojaVirtual implements Serializable {
     foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "cupom_desc_fk"))
 	private CupDesc cupDesc;
 
-	@Column(nullable = false)
+	//@Column(nullable = false)
 	private BigDecimal valorFret;
 
-	@Column(nullable = false)
+	//@Column(nullable = false)
 	private Integer diaEntrega;
 
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date dataVenda;
 
-	@Column(nullable = false)
+	//@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date dataEntrega;
 	
