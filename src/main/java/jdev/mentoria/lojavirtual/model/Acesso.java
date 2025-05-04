@@ -26,8 +26,6 @@ public class Acesso implements GrantedAuthority {
 
     @Override
     public String getAuthority() {
-        // TODO Auto-generated method stub
-        //throw new UnsupportedOperationException("Unimplemented method 'getAuthority'");
         return this.descricao;
     }
 

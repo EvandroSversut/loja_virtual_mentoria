@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -30,33 +31,22 @@ public class ContaPagar implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_conta_pagar")
     private Long id;
 
+    @Column(nullable = false)
     private String descricao;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private StatusContaPagar status;
 
+    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date dtVencimento;
 
-    public StatusContaPagar getStatus() {
-        return status;
-    }
-
-    public void setStatus(StatusContaPagar status) {
-        this.status = status;
-    }
-
-    public Pessoa getPessoa_fornecedor() {
-        return pessoa_fornecedor;
-    }
-
-    public void setPessoa_fornecedor(Pessoa pessoa_fornecedor) {
-        this.pessoa_fornecedor = pessoa_fornecedor;
-    }
 
     @Temporal(TemporalType.DATE)
     private Date dtPagamento;
     
+    @Column(nullable = false)
     private BigDecimal valorTotal;
 
     private BigDecimal valorDesconto;
@@ -126,6 +116,23 @@ public class ContaPagar implements Serializable {
    public void setPessoa(Pessoa pessoa) {
     this.pessoa = pessoa;
    }
+
+   
+   public StatusContaPagar getStatus() {
+    return status;
+}
+
+public void setStatus(StatusContaPagar status) {
+    this.status = status;
+}
+
+public Pessoa getPessoa_fornecedor() {
+    return pessoa_fornecedor;
+}
+
+public void setPessoa_fornecedor(Pessoa pessoa_fornecedor) {
+    this.pessoa_fornecedor = pessoa_fornecedor;
+}
 
    @Override
    public int hashCode() {
